@@ -1,0 +1,22 @@
+version: "3"
+services:
+  ngrok-media:
+    build:
+      context: ngrok
+    links:
+      - "media:app"
+  ngrok-advertiser:
+    build:
+      context: ngrok
+    links:
+      - "advertiser:app"
+  media:
+    build:
+      context: app
+    command: /bin/media
+    ports:
+      - 80:80
+  advertiser:
+    build:
+      context: app
+    command: /bin/advertiser
